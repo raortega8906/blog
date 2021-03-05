@@ -3,6 +3,8 @@
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Web\WebController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +18,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [WebController::class, 'index'])->name('index');
+Route::get('/detail/{id}', [WebController::class, 'detail']);
+Route::get('/post-category', [WebController::class, 'post_category']);
+Route::get('/contact', [WebController::class, 'contact']);
+Route::get('/categories', [WebController::class, 'index']);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
 
 Route::group(['prefix' => 'dashboard'], function () {
     Route::resource('post', PostController::class);

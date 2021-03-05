@@ -25,8 +25,8 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->category->title }}</td>
                     <td>{{ $post->posted }}</td>
-                    <td>{{ $post->created_at->format('d-m-Y') }}</td>
-                    <td>{{ $post->updated_at->format('d-m-Y') }}</td>
+                    <td>{{ $post->created_at->format('Y-m-d') }}</td>
+                    <td>{{ $post->updated_at->format('Y-m-d') }}</td>
                     <td>
                         <a href="{{ route('post.show', $post->id) }}" class="btn btn-primary mt-2 mb-2">Ver</a>
                         <a href="{{ route('post.edit', $post->id) }}" class="btn btn-success mt-2 mb-2">Actualizar</a>
